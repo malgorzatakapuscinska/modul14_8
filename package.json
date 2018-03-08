@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run test:html && npm run test:js",
+    "start": "http-server",
     "test:html": "glob-run nu-html-checker *.html",
     "test:js": "jshint ./",
     "init-project": " npm run init:npm-install && npm run init:dirs && npm run init:files && npm run init:gitignore",
@@ -43,5 +44,8 @@
     "onchange": "^3.3.0",
     "parallelshell": "^3.0.2",
     "rimraf": "^2.6.2"
+  },
+  "devDependencies": {
+    "http-server": "^0.11.1"
   }
 }
