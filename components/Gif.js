@@ -11,7 +11,7 @@ Gif = React.createClass({
 		return this.props.sourceUrl || GIPHY_LOADING_URL;
 	},
 	render: function(){
-		var url = this.props.loading ? GIPHY_LOADING_URL : this.props.url;
+		var url = this.props.loading ? GIPHY_LOADING_URL : this.props.url; //nie rozumiem tego zapisu ??????
 		
 		return (
 			<div style={styles}>

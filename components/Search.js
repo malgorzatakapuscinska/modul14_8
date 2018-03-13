@@ -1,9 +1,15 @@
 Search = React.createClass({
+	
+	// set initial state
+	
     getInitialState(){
         return {
           searchingText: ''  
         };
     },
+    
+    // definition of handleChange method - assigns a value of string written in input field to searchingText 
+    
     handleChange: function(event) {
         var searchingText = event.target.value; // przypisujemy do zmiennej znaki wpisane na klawiaturze
         console.log(searchingText);
@@ -11,12 +17,14 @@ Search = React.createClass({
             searchingText: searchingText
         });
         if (searchingText.length>2){
-            this.props.onSearch(searchingText); // ??????????? - to wywołuje funkcję handleSwearch w App???
+            this.props.onSearch(searchingText);  //przekazuje wartość zmiennej searchingText do funkcji handleSearch ????? CO to jest onSearch - jakieś zdarzenie??????
         }
     },
+    
+    // definition of handleKeyUp method - po ki diabeł mi ta funkcja - nie do końca rozumiem ???? Aplikacja działa nadal po wyłączeniu tej metody
     handleKeyUp: function(event){
         if(event.keyKode === 13){
-            this.props.onSearch(this.state.searchingText); // ??????????????? to j.w.?????
+            this.props.onSearch(this.state.searchingText); // zmienia stan komponentu Search na aktualną wartość stringa wpisanego przez użytkownika ??????
         }
     },
     
@@ -30,11 +38,11 @@ Search = React.createClass({
        return (
           <input 
           type='text'
-          onChange={this.handleChange} //wywołuje funkcję handleChange
-          onKeyUp={this.handleKeyUp} //wywołuje funkcję handleKeyUp
+          onChange={this.handleChange}  //uruchamia metodę handleChange 
+          onKeyUp={this.handleKeyUp} 	//uruchamia metodę  handleKeyUp
           placeholder='Tutaj wpisz wyszukiwana frazę'
           style={styles}
-          value={this.state.searchTerm} //???????????????
+          value={this.state.searchTerm} /* tego nie rozumiem - po ki diabeł to jest i co to ustawia ???????*/
           />
        ); 
    } 
