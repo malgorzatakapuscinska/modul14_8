@@ -15,7 +15,6 @@ Search = React.createClass({
    		 /* A. create variable and assign input text to variable*/
      
         var searchingText = event.target.value;  
-        console.log(searchingText);
         
    		 /* B. assign a value of searchingText variable to searchingText state */
     
