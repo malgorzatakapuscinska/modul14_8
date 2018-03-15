@@ -38,11 +38,11 @@ Search = React.createClass({
         if(event.keyCode === 13){
             this.props.onSearch(this.state.searchingText);}
     },
-  /*3. Render method  */
+    
+  /*4. Render method  */
   
-  Reander
-  /* onChange={this.handleChange} means "on onChange (input React event) run hendleChange method"*/
-  /* onKeyUp={this.handleKeyUp} means "onkeyUp event (keyboard React event) run handleKeyUp method */
+	  /* onChange={this.handleChange} means "on onChange (input React event) run hendleChange method"*/
+	  /* onKeyUp={this.handleKeyUp} means "onkeyUp event (keyboard React event) run handleKeyUp method */
   
     render: function (){
        var styles: {

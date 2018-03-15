@@ -6,11 +6,13 @@ var styles = {
 
 Gif = React.createClass({
 
-/* getUrl method - returns  url received by props from App component */
+//1.  getUrl method - returns  url received by props from App component */
 
 	getUrl: function(){
 		return this.props.sourceUrl || GIPHY_LOADING_URL;
 	},
+	
+//2. render method
 	
 	render: function(){
 	

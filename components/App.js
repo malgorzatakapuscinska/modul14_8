@@ -3,7 +3,7 @@ var GIPHY_PUB_KEY = 'q4k1xiFfyXHFEVGeG4SYB8VJsIA5OtQu';
 
 App = React.createClass({
 
-//sets initial state
+//1. sets initial state
 
 	getInitialState(){
 		return {
@@ -13,7 +13,7 @@ App = React.createClass({
 		};
 	},
 
-//handleSearch method sets state loading to true and calls getGif function. The parameter of function is searchingText an callback. Receive gif object as callback and sets new states after receiving gif
+// 2. HandleSearch method sets state loading to true and calls getGif function. The parameter of function is searchingText an callback. Receive gif object as callback and sets new states after receiving gif
 
 	handleSearch: function(searchingText){
 	
@@ -23,7 +23,7 @@ App = React.createClass({
 			loading: true
 		});
 		
-	//b) this part runs getGif method and sets new state of App component then receive gif object from callback
+	// b) this part runs getGif method and sets new state of App component then receive gif object from callback
 	
 		this.getGif(searchingText, function(gif){
 	
@@ -35,7 +35,7 @@ App = React.createClass({
 		}.bind(this)); 
 	},
 	
-	//  getGif method - gets gif from giphy.com and returns gif object as callback
+// 3.  getGif method - gets gif from giphy.com and returns gif object as callback
 	
 	getGif: function(searchingText, callback){
 
@@ -56,7 +56,7 @@ App = React.createClass({
 		xhr.send();
 	},
 	
-	/* Render method  */
+/* 4.  Render method  */
 	
 		/* onSearch={this.handleSearch - refers handleSearch function to Search component as  property */
 		/* this.state.loading - refers loading state to Gif component as property*/
