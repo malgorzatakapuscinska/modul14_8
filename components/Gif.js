@@ -1,17 +1,22 @@
-// Shows gif or loader
-
-var GIPHY_LOADING_URL = 'http://www.ifmo.ru/images/loader.gif'; //
+var GIPHY_LOADING_URL = 'http://www.ifmo.ru/images/loader.gif'; 
 var styles = {
 	minHeight: '310px',
 	margin: '0.5em'
 };
 
 Gif = React.createClass({
+
+/* getUrl method - returns  url received by props from App component */
+
 	getUrl: function(){
 		return this.props.sourceUrl || GIPHY_LOADING_URL;
 	},
+	
 	render: function(){
-		var url = this.props.loading ? GIPHY_LOADING_URL : this.props.url; //nie rozumiem tego zapisu ??????
+	
+	/* In depeends on value of loading state returns Gif element containing gif from giphy.com (then loading is false) or loading gif (then loading is true)   */
+	
+		var url = this.props.loading ? GIPHY_LOADING_URL : this.props.url; 
 		
 		return (
 			<div style={styles}>

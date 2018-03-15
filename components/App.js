@@ -3,7 +3,7 @@ var GIPHY_PUB_KEY = 'q4k1xiFfyXHFEVGeG4SYB8VJsIA5OtQu';
 
 App = React.createClass({
 
-//set initial state
+//sets initial state
 
 	getInitialState(){
 		return {
@@ -13,20 +13,20 @@ App = React.createClass({
 		};
 	},
 
-// metoda handleSearch ustawia stan loading na true a następnie wywoluje funkcję getGif, parametrem jest wartosć zmeinnej searchingText otrzymanej od funkcji handleChange????
+//handleSearch method sets state loading to true and calls getGif function. The parameter of function is searchingText an callback. Receive gif object as callback and sets new states after receiving gif
 
 	handleSearch: function(searchingText){
 	
-	//sets state loading to true - shows loading gif
+	// a) sets state loading to true - shows loading gif
 	
 		this.setState({
 			loading: true
 		});
 		
-	//wywolanie metody getGif - otrzymuje ona parametry searchingText oraz funkcję z parametrem w postaci pustego obiektu gif ???
+	//b) this part runs getGif method and sets new state of App component then receive gif object from callback
 	
-		this.getGif(searchingText, function(gif){ //tu daję do funkcji getGif funkcję z pustym obiektem gif jako argumentem
-		// ustawienie stanu elementu App:
+		this.getGif(searchingText, function(gif){
+	
 			this.setState({
 				loading: false,
 				gif: gif,
@@ -35,7 +35,7 @@ App = React.createClass({
 		}.bind(this)); 
 	},
 	
-	// definicja metody getGif - pobiera z serwera dane obrazka i zwraca obiekt gif poprzez callback 
+	//  getGif method - gets gif from giphy.com and returns gif object as callback
 	
 	getGif: function(searchingText, callback){
 
@@ -50,12 +50,19 @@ App = React.createClass({
 					url: data.fixed_width_downsampled_url,
 					sourceUrl: data.url
 				};
-				callback(gif); // a tutaj dostaję obiekt gif przekazywany przez callback do funkcji setstate w handlesearch - I am right????
+				callback(gif); 
 			}
 		}
 		xhr.send();
 	},
 	
+	/* Render method  */
+	
+		/* onSearch={this.handleSearch - refers handleSearch function to Search component as  property */
+		/* this.state.loading - refers loading state to Gif component as property*/
+		/* this.state.gif.url -  refers url adress to Gif component as property */
+		/* this.state.gif.sourceUrl - refers sourceUrl adress to Gif component as property */
+		
 	render: function(){
 		var styles = {
 			margin: '0 auto',
@@ -63,15 +70,17 @@ App = React.createClass({
 			width: '90%'
 		}
 		
+		
+		
 		return (
 			<div style={styles}>
 				<h1>Wyszukiwarka Gifów</h1>
 				<p>Znajdź gifa na <a href="'http://giphy.com">giphy</a> Naciskaj Enter, aby pobrać kolejne gify.</p>
-				<Search onSearch={this.handleSearch} /> 
+				<Search onSearch={this.handleSearch} /> 				
 				<Gif
-					loading={this.state.loading}
-					url={this.state.gif.url}
-					sourceUrl={this.state.gif.sourceUrl} />
+					loading={this.state.loading}	
+					url={this.state.gif.url}		
+					sourceUrl={this.state.gif.sourceUrl} /> 
 			</div>
 		);
 	}

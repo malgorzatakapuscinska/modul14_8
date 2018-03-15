@@ -1,6 +1,6 @@
 Search = React.createClass({
 	
-	// set initial state
+	/* 1. set initial state*/
 	
     getInitialState(){
         return {
@@ -8,26 +8,43 @@ Search = React.createClass({
         };
     },
     
-    // definition of handleChange method - assigns a value of string written in input field to searchingText 
+    /* 2 handleChange method  */
     
     handleChange: function(event) {
-        var searchingText = event.target.value; // przypisujemy do zmiennej znaki wpisane na klawiaturze
+    
+   		 /* A. create variable and assign input text to variable*/
+     
+        var searchingText = event.target.value;  
         console.log(searchingText);
-        this.setState({							//ustawiamy stan searchingText - nadajemy mu wartość wpisanego tekstu
+        
+   		 /* B. assign a value of searchingText variable to searchingText state */
+    
+        this.setState({							
             searchingText: searchingText
         });
+        
+    	/* C. runnung handleSearch method with parameter searchingText  */
+    	
         if (searchingText.length>2){
-            this.props.onSearch(searchingText);  //przekazuje wartość zmiennej searchingText do funkcji handleSearch ????? CO to jest onSearch - jakieś zdarzenie??????
+            this.props.onSearch(searchingText);  
         }
     },
     
-    // definition of handleKeyUp method - po ki diabeł mi ta funkcja - nie do końca rozumiem ???? Aplikacja działa nadal po wyłączeniu tej metody
+  /* 3. handleKeyUp method - assigns new value to searchingText  state  and runs handleSearch function then Enter is released*/
+  
+  		/* this.props.onSearch(this.state.searchingText) - runs handleSearch with searchingtext prameter equal input text */
+  		
+  		
     handleKeyUp: function(event){
-        if(event.keyKode === 13){
-            this.props.onSearch(this.state.searchingText); // zmienia stan komponentu Search na aktualną wartość stringa wpisanego przez użytkownika ??????
-        }
+        if(event.keyCode === 13){
+            this.props.onSearch(this.state.searchingText);}
     },
-    
+  /*3. Render method  */
+  
+  Reander
+  /* onChange={this.handleChange} means "on onChange (input React event) run hendleChange method"*/
+  /* onKeyUp={this.handleKeyUp} means "onkeyUp event (keyboard React event) run handleKeyUp method */
+  
     render: function (){
        var styles: {
            fontSize: '1,5em ',
@@ -38,11 +55,11 @@ Search = React.createClass({
        return (
           <input 
           type='text'
-          onChange={this.handleChange}  //uruchamia metodę handleChange 
-          onKeyUp={this.handleKeyUp} 	//uruchamia metodę  handleKeyUp
-          placeholder='Tutaj wpisz wyszukiwana frazę'
+          onChange={this.handleChange}  
+          onKeyUp={this.handleKeyUp} 	
+          placeholder='Tutaj wpisz wyszukiwaną frazę'
           style={styles}
-          value={this.state.searchTerm} /* tego nie rozumiem - po ki diabeł to jest i co to ustawia ???????*/
+          value={this.state.searchTerm} 
           />
        ); 
    } 
